@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime
 from datetime import timedelta
 
-df = pd.read_csv('10k.csv')
+df = pd.read_csv('datasets/10k.csv')
 df = df[df['chip_elapsed_time'].isnull() == False]
 # print(df)
 
@@ -32,7 +32,9 @@ df['elapsed_time_minutes'] = df.apply(convert_timedelta_to_minutes, axis=1)
 print(df)
 print()
 print(df[df['bib_number'] == 428])
+print(f"# of runners in M20 - 29 Group: {len(df[df['age_group'] == "M20 - 29"])}")
 
 
-df.hist('elapsed_time_minutes', bins=30)
-plt.show()
+
+# df.hist('elapsed_time_minutes', bins=60, grid=False, density=True)
+# plt.show()
