@@ -1,0 +1,36 @@
+Race Results: "46th Annual Pumpkin Run by Senior Coastsiders October 20, 2024"
+https://results.raceroster.com/v2/en-US/results/4du2ec7ndnu4mtt5/results
+
+Scraping table:
+// copied JS Selector from devtools for table selector
+let table = document.querySelector("#radix-\\:r7\\:-content-results > div > div > div.w-100.overflow-auto > table");
+let rows = Array.from(table.querySelectorAll('tr')).slice(1);
+
+for (row of rows) {
+    row_elements = Array.from(row.children).slice(0,12).map(r => r.textContent.trim());
+    console.log( row_elements.join(",") );
+}
+
+very crude, then just saved the console text output and cleaned it
+
+plotly.js ?
+or go raw and use d3.js .... really want it to look pretty, but plotly has convenient functions
+
+
+
+https://nextjs.org/learn/dashboard-app/setting-up-your-database | seems like a convenient tutorial, it says dashboard-app lol
+seems like vercel has a thing for me to create a database... and should be easy to integrate, but can theoritically use any other database ig?
+Vercel Postgres Storage... First 256 MB free
+but I can't write to it?? not sure what Vercel Postgres Written Data is
+
+
+Prisma ORM?
+https://vercel.com/docs/storage/vercel-postgres/using-an-orm#prisma
+need to seed the DB, not sure how
+
+https://vercel.com/templates/next.js/postgres-prisma
+
+I don't want a whole nextjs app just to do the initial seeding
+should just be a simple script that reads my csv and uploads
+https://chatgpt.com/share/6718155f-3c5c-8003-ba84-4723a512923a
+^ following chatgpt to create a minimal node project that reads csv and uploads using prisma
