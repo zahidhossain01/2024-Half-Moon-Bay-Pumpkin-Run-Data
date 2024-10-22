@@ -9,8 +9,9 @@ df = df[df['chip_elapsed_time'].isnull() == False]
 
 print()
 
-def convertTime(row):
-    time_string_split = row['chip_elapsed_time'].split(":")
+def parseTime(t):
+    """Normalize mix of H:MM:SS and MM:SS to HH:MM:SS"""
+    time_string_split = t.split(":")
     hours = 0
     minutes = 0
     seconds = 0
@@ -20,21 +21,27 @@ def convertTime(row):
     if(len(time_string_split) == 3):
         hours = int(time_string_split[0])
         minutes = int(time_string_split[1])
-        seconds = int(time_string_split[2])
-    return timedelta(hours=hours,minutes=minutes,seconds=seconds)
+        seconds = int(time_string_split[2]) 
+    td = timedelta(hours=hours,minutes=minutes,seconds=seconds)
+    return str(td)
 
 def convert_timedelta_to_minutes(row):
-    td = row['elapsed_time_parsed']
+    time = row['chip_elapsed_time']
+    time_split = time.split(":")
+    hours = int(time_split[0])
+    minutes = int(time_split[1])
+    seconds = int(time_split[2])
+    td = timedelta(hours=hours,minutes=minutes,seconds=seconds)
     return td.total_seconds()/60
 
-df['elapsed_time_parsed'] = df.apply(convertTime, axis=1)
+df['chip_elapsed_time'] = df['chip_elapsed_time'].apply(parseTime)
 df['elapsed_time_minutes'] = df.apply(convert_timedelta_to_minutes, axis=1)
 print(df)
 print()
 print(df[df['bib_number'] == 428])
 print(f"# of runners in M20 - 29 Group: {len(df[df['age_group'] == "M20 - 29"])}")
 
-
+df.to_csv('testoutput.csv', index=False)
 
 # df.hist('elapsed_time_minutes', bins=60, grid=False, density=True)
 # plt.show()
