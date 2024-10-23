@@ -44,3 +44,12 @@ https://tailwindcss.com/docs/preflight
 
 https://nextjs.org/docs/app/building-your-application/routing/colocation
 https://nextjs.org/docs/pages/building-your-application/data-fetching/client-side
+
+ykw, build errors were probably caused by me using npx, should be using pnpm dlx or pnpm exec instead (npx technically also deprecated? should be npm exec? idk man)
+deleted node_modules
+pnpm install
+pnpm dlx prisma generate
+
+wait.... my local node_modules shouldn't affect the vercel deployment.... ugh....
+
+deleted pnpm-lock.yaml and ran pnpm install again

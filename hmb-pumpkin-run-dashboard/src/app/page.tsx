@@ -1,5 +1,4 @@
 import { PrismaClient } from '@prisma/client';
-import Plotly from 'plotly.js-dist-min'
 
 const prisma = new PrismaClient();
 

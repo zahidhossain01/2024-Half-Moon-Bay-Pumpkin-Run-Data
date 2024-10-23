@@ -12,6 +12,7 @@
   "dependencies": {
     "@prisma/client": "^5.21.1",
     "csv-parser": "^3.0.0",
-    "prisma": "^5.21.1"
+    "prisma": "^5.21.1",
+    "seed_db": "file:"
   }
 }
