@@ -34,3 +34,13 @@ I don't want a whole nextjs app just to do the initial seeding
 should just be a simple script that reads my csv and uploads
 https://chatgpt.com/share/6718155f-3c5c-8003-ba84-4723a512923a
 ^ following chatgpt to create a minimal node project that reads csv and uploads using prisma
+
+
+
+why h1 not rendering as large: (bc of tailwind)
+https://stackoverflow.com/questions/69278291/why-h1-tag-is-rendering-normal-size-text-in-react-nextjs
+https://tailwindcss.com/docs/preflight
+
+
+https://nextjs.org/docs/app/building-your-application/routing/colocation
+https://nextjs.org/docs/pages/building-your-application/data-fetching/client-side
