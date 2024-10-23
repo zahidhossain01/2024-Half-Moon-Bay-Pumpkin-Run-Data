@@ -15,7 +15,7 @@ export default async function Home() {
     <div id="testplotcontainer">
       {
       res.map(r => {
-        return <p>{JSON.stringify(r)}</p>;
+        return <p key={r.id}>{JSON.stringify(r)}</p>;
       })
       }
     </div>
